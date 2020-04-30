@@ -6,23 +6,19 @@ const GhostAdminApi = require('@tryghost/admin-api');
 
 (async function main() {
     try {
-        const url = core.getInput('api-url');
+        const url = process.env.GHOST_ADMIN_API_URL || core.getInput('api-url');
         const api = new GhostAdminApi({
             url,
-            key: core.getInput('api-key'),
+            key: process.env.GHOST_ADMIN_API_KEY || core.getInput('api-key'),
             version: 'canary'
         });
 
         const basePath = process.env.GITHUB_WORKSPACE;
         const contentPath = path.join(process.env.GITHUB_WORKSPACE, 'posts');
-        fs.readdir(contentPath, function (err, files) {
-            if (err) {
-                console.error(err);
-                process.exit(1);
-            }
-            files.forEach(function (file) {
-                console.log(file);
-            });
+        const files = fs.readdirSync(contentPath).filter(fn => fn.match(/\.md$/i));
+        console.log(`Found ${files.length} markdown file(s) to process`);
+        files.forEach(function (file) {
+            console.log(file);
         });
 
         // Deploy it to the configured site
