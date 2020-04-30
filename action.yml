@@ -1,5 +1,5 @@
-name: 'Deploy Ghost Theme'
-description: 'Build & deploy a theme to your Ghost site'
+name: 'Deploy Ghost Content'
+description: 'Deploy content to your Ghost site'
 branding:
   icon: 'cloud-lightning'
   color: 'gray-dark'
@@ -10,9 +10,6 @@ inputs:
   api-key:
     description: 'Ghost Admin API Key'
     required: true
-  exclude:
-    description: 'Files or folders to exclude (space-separated list)'
-    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
