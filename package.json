@@ -1,8 +1,8 @@
 {
   "name": "action-deploy-theme",
   "version": "0.1.0",
-  "repository": "git@github.com:TryGhost/action-deploy-theme.git",
-  "author": "Ghost Foundation",
+  "repository": "git@github.com:lrettig/action-deploy-content.git",
+  "author": "Lane Rettig",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
